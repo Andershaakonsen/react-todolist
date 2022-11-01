@@ -9,7 +9,7 @@ import { useEffect } from "react";
 const initialTodos = [
   { id: 0, text: "Clean kitchen", completed: false },
   { id: 1, text: "Buy groceries", completed: false },
-  { id: 2, text: "Deplay App", completed: true },
+  { id: 2, text: "Deploy App", completed: true },
 ];
 
 const Container = () => {
