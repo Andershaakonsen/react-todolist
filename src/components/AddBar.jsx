@@ -1,14 +1,14 @@
 import React from "react";
 import { useState } from "react";
 
-const AddBar = ({ setTodos, todos }) => {
+const AddBar = ({ setTodos, todos = [""] }) => {
   const [input, setInputText] = useState("");
 
   const handleChange = (e) => {
     setInputText(e.target.value);
   };
 
-  const setId = (arr) => {
+  const getId = (arr) => {
     if (arr.length == 0) {
       return 0;
     }
@@ -20,9 +20,10 @@ const AddBar = ({ setTodos, todos }) => {
     setTodos((prevState) => {
       return [
         ...prevState,
-        { id: setId(prevState), text: input, completed: false },
+        { id: getId(prevState), text: input, completed: false },
       ];
     });
+    setInputText("");
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -35,7 +36,7 @@ const AddBar = ({ setTodos, todos }) => {
       />
       <button
         type="submit"
-        className="border border-radix-blue7 text-sm ml-2 bg-radix-blue9 px-2 outline-none"
+        className="border rounded-sm border-radix-blue7 text-sm ml-2 bg-radix-blue9 px-2 py-0.5 outline-none"
       >
         ADD
       </button>
