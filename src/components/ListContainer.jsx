@@ -1,19 +1,7 @@
 import React from "react";
 import ListItem from "./ListItem";
 
-const ListContainer = () => {
-  const todos = [
-    {
-      id: "1",
-      text: "Clean Room",
-      completed: "false",
-    },
-    {
-      id: "2",
-      text: "Work out",
-      completed: "false",
-    },
-  ];
+const ListContainer = ({ todos }) => {
   return (
     <div className="mt-4 border border-radix-slate6 w-4/6">
       <ul>

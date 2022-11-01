@@ -1,15 +1,29 @@
 import React from "react";
 import { useState } from "react";
 
-const AddBar = () => {
+const AddBar = ({ setTodos, todos }) => {
   const [input, setInputText] = useState("");
 
-  const handleChange = () => {};
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("submitted");
+  const handleChange = (e) => {
+    setInputText(e.target.value);
   };
 
+  const setId = (arr) => {
+    if (arr.length == 0) {
+      return 0;
+    }
+    return arr.length;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setTodos((prevState) => {
+      return [
+        ...prevState,
+        { id: setId(prevState), text: input, completed: false },
+      ];
+    });
+  };
   return (
     <form onSubmit={handleSubmit}>
       <input
