@@ -4,13 +4,16 @@ import Addbar from "./AddBar";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
 import { useMemo } from "react";
+import { useEffect } from "react";
+
+const initialTodos = [
+  { id: 0, text: "Clean kitchen", completed: false },
+  { id: 1, text: "Buy groceries", completed: false },
+  { id: 2, text: "Deplay App", completed: true },
+];
 
 const Container = () => {
-  const [todos, setTodos] = useState([
-    { id: 0, text: "Learn React", completed: false },
-    { id: 1, text: "Experiment with tailwind", completed: false },
-    { id: 2, text: "Deplay App", completed: false },
-  ]);
+  const [todos, setTodos] = useState(initialTodos);
   const [filter, setFilter] = useState("All");
   const [input, setInput] = useState("");
 
@@ -32,9 +35,6 @@ const Container = () => {
           //Return element where the elements text includes the text from input
           el.text.toLowerCase().includes(input.toLowerCase())
         );
-  /*
- rounded corners 
-*/
 
   return (
     <div className="flex flex-col border rounded-lg border-radix-slate6 w-4/6 mt-4 items-center">
